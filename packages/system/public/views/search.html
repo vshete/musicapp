@@ -1,0 +1,22 @@
+<link rel="stylesheet" type="text/css" href="/css/search.css">
+<section ng-controller="SearchController">
+	<form role="form" method="get" ng-model="TrackSearch" ng-submit="submit()">
+		<div class="form-group">
+    		<label for="track">Search music</label>
+    		<input type="text" class="form-control" ng-model="track" placeholder="Enter track name" />
+		</div>
+  	<button type="submit" class="btn btn-default">Go</button>
+	</form>
+	<div class="results" ng-cloak>
+		<div ng-repeat="track in tracks" class="trackItem" ng-style="{{position}}" ng-init="trackPosition()">
+			<div>
+				<a href="{{track.url}}">
+					<!-- <div class="trackName">{{track.name}}</div> -->
+					<img class="trackImg" src='{{track.image[2]["#text"]}}'>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- Back to top scroll directive -->
+	<scroll class="scrollTop" ng-click="gotoTop()" ng-show="scrollVisible" title="Back to top"></scroll>
+</section>
