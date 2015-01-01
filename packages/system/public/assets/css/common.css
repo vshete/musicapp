@@ -1,3 +1,7 @@
+body { 
+    background: url("/img/wooden.jpg") repeat center;
+    color: #583309;
+}
 .page-header {
     padding-bottom: 0 !important;
     margin: 0 !important;

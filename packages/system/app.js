@@ -24,12 +24,15 @@ SystemPackage.register(function(app, auth, database) {
 
   // Set views path, template engine and default layout
   app.set('views', __dirname + '/server/views');
-
+  app.use('/css', express.static(__dirname + '/public/assets/css'));
+  app.use('/img', express.static(__dirname + '/public/assets/img'));
+  
   // Setting the favicon and static folder
-  app.use(favicon(__dirname + '/public/assets/img/favicon.ico'));
+  app.use(favicon(__dirname + '/public/assets/img/icon.png'));
 
   // Adding robots and humans txt
   app.use(express.static(__dirname + '/public/assets/static'));
+  // app.use('/css', express.static(__dirname + '/public/css'));
 
   return SystemPackage;
 });

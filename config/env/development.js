@@ -36,6 +36,11 @@ module.exports = {
     clientSecret: 'SECRET_KEY',
     callbackURL: 'http://localhost:3000/auth/linkedin/callback'
   },
+  lastfm: {
+    clientID: '6a5ac42ba366bfd38802b82d3433e59d',
+    clientSecret: '4fdaf54d97e81799e4d9b51da67baf71',
+    callbackURL: 'http://localhost:3000/lastfm/api/response'
+  },
   emailFrom: 'SENDER EMAIL ADDRESS', // sender address like ABC <abc@example.com>
   mailer: {
     service: 'SERVICE_PROVIDER', // Gmail, SMTP
