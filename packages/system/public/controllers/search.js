@@ -4,6 +4,8 @@ angular.module('mean.system').controller('SearchController', ['$scope', '$http',
   function($scope, $http) {
     $scope.submit = function(){
       if ($scope.track) {
+        $scope.trackno = 1;
+        $scope.position = {left: '0%', top: '0%'};
    		 	$http.get('/track/' + $scope.track).
       		success(function (data, status, headers, config) {
             if('errno' in data){
@@ -21,11 +23,10 @@ angular.module('mean.system').controller('SearchController', ['$scope', '$http',
   				});
       }
     };
-    $scope.trackno = 1;
-    $scope.position = {left: '0%', top: '0%'};
     $scope.trackPosition = function(){
-      $scope.position.left = 5 + ($scope.trackno-1)%5*20 + '%';
-      $scope.position.top = Math.floor(($scope.trackno-1)/5)*25+ 30 + '%';
+      console.log($scope.trackno);
+      $scope.position.left = 5 + ($scope.trackno-1)%7*10 + '%';
+      $scope.position.top = Math.floor(($scope.trackno-1)/7)*18+ 30 + '%';
       $scope.trackno += 1;
     };
   }

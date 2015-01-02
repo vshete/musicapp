@@ -10,8 +10,8 @@
 	<div class="results" ng-cloak>
 		<div ng-repeat="track in tracks" class="trackItem" ng-style="{{position}}" ng-init="trackPosition()">
 			<div>
-				<a href="{{track.url}}">
-					<!-- <div class="trackName">{{track.name}}</div> -->
+				<a href="{{track.url}}" class="trackLink">
+					<div class="trackName">{{track.name}}</div>
 					<img class="trackImg" src='{{track.image[2]["#text"]}}'>
 				</a>
 			</div>
