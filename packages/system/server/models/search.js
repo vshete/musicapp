@@ -25,7 +25,8 @@ var SearchSchema = new Schema({
 	failure_count: {
 		type: Number,
 		default: 0
-	}
+	},
+	time: Date
 });
 
 mongoose.model('Search', SearchSchema);

@@ -5,30 +5,26 @@ var request = require('request'),
     Search = mongoose.model('Search');
     
 exports.getTracks = function(req, res) {
-	// get('http://ws.audioscrobbler.com/2.0/?method=track.search&track=Believe&api_key=6a5ac42ba366bfd38802b82d3433e59d&format=json')
-  
-
   var url ='http://ws.audioscrobbler.com/2.0/?method=track.search&track=',
-      api_key = '6a5ac42ba366bfd38802b82d3433e59d',
+      api_key = '', // Insert your app's API key here
       track,
       allErr = {};
-  track = new Search({term: req.params.track});
+  track = new Search({term: req.params.track.toLowerCase(), time: new Date()});
   Search
     .findOne({
-      term: req.params.track
+      term: (req.params.track.toLowerCase())
     })
     .exec(function(err, search) {
       if (err){
         allErr.findErr = 'Database: Term hunt error';
-        // return next(err); 
       }
       if (search) {
         track = search;
         track.count += 1;
+        track.time = new Date();
       }
     });
-  // req.assert('track', 'You must enter a track to search').notEmpty();
-  
+   
   console.log('Making an API call to http://ws.audioscrobbler.com............');
   console.log('Search term: '+ req.params.track);
   request(url + req.params.track +'&api_key=' + api_key + '&format=json', function (error, response, body) {    
